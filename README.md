@@ -23,21 +23,22 @@ How It Works
 
 On the client side, jstz (http://pellepim.bitbucket.org/jstz/) is used to set a cookie with the users timezone. A middleware picks up the cookie and activates the timezone using Django's timezone handling. If a user is authenticated, it will also set the timezone in the session under a key called **timezone** as well as save it to the database.
 
-Anytime you want to access a users timezone, you can do so by calling `my_user.tz`. This will get_or_create a timezone entry for the user. If there is no entry present, it defaults to what is set in settings.TIME_ZONE or GMT. From there, its up to you to use Django's built in handling. Django automatically converts aware datetimes that are used in templates. If you're in Django, just do the following
+Anytime you want to access a users timezone, you can do so by calling `my_user.tz`. This will get_or_create a timezone entry for the user. If there is no entry present, it defaults to what is set in `settings.TIME_ZONE` or **'GMT'**. From there, its up to you to use Django's built in handling. Django automatically converts aware datetimes that are used in templates. If you're in Django, just do the following
 
 ```Python
 from django.utils import timezone
 
 def foo(request):
 	timezone.localtime(timezone.now(), request.user.tz)
+	...
 ```
 
 Model
 ----------------------
 There is a simple storage model in `timezones.models.TimezoneStore` with the following fields:
 
- - user: OneToOne to the user
- - timezone: the current timezone string for that user
+ - **user**: OneToOne to the user
+ - **timezone**: the current timezone string for that user
 
 If you want to cut down on redundant queries, just make sure to select_related timezone if you are accessing the `.tz` property on users.
 
