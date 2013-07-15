@@ -12,7 +12,7 @@ The purpose of this django app is to piggy back off of Django's already great ti
 Setup
 ---------------------
 
- 1. Use your favorite python installer. `$ pip install django-easytz`
+ 1. Use your favorite python package installer. `$ pip install django-easytz`
  2. Make sure `USE_TZ` is set to True in your settings file. This is Django's default since they introdcued timezone support in 1.4
  3. add `easytz.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
  4. add `easytz` to your `INSTALLED_APPS`
