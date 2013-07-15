@@ -12,11 +12,12 @@ The purpose of this django app is to piggy back off of Django's already great ti
 Setup
 ---------------------
 
- 1. Make sure `USE_TZ` is set to True in your settings file. This is Django's default since they introdcued timezone support in 1.4
- 2. add `easytz.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
- 3. add `easytz` to your `INSTALLED_APPS`
- 4. include {{ STATIC_URL }}easytz/js/easytz.js with your scripts 
- 5. Run syncdb to add the model for storing users timezones
+ 1. Use your favorite python installer. `$ pip install django-easytz`
+ 2. Make sure `USE_TZ` is set to True in your settings file. This is Django's default since they introdcued timezone support in 1.4
+ 3. add `easytz.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
+ 4. add `easytz` to your `INSTALLED_APPS`
+ 5. include {{ STATIC_URL }}easytz/js/easytz.js with your scripts 
+ 6. Run syncdb to add the model for storing users timezones
 
 How It Works
 ----------------------
