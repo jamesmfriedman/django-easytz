@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = 'django-timezones',
+    name = 'django-tz',
     version = '0.1',
     description = 'Timezone localization without any thinking or doing whatsoever.',
     long_description = open('README.md').read(),

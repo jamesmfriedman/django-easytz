@@ -1,4 +1,4 @@
-Django Timezones
+Django TZ
 ====================
 
 Timezone localization without any thinking or doing whatsoever.
