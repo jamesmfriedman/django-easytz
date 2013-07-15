@@ -1,4 +1,4 @@
-Django TZ
+Django EasyTZ
 ====================
 
 Timezone localization without any thinking or doing whatsoever.
@@ -13,9 +13,9 @@ Setup
 ---------------------
 
  1. Make sure `USE_TZ` is set to True in your settings file. This is Django's default since they introdcued timezone support in 1.4
- 2. add `timezones.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
+ 2. add `easytz.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
  3. add `timezones` to your `INSTALLED_APPS`
- 4. include {{ STATIC_URL }}timezones/js/timezones.js with your scripts 
+ 4. include {{ STATIC_URL }}easytz/js/easytz.js with your scripts 
  5. Run syncdb to add the model for storing users timezones
 
 How It Works
@@ -35,7 +35,7 @@ def foo(request):
 
 Model
 ----------------------
-There is a simple storage model in `timezones.models.TimezoneStore` with the following fields:
+There is a simple storage model in `easytz.models.TimezoneStore` with the following fields:
 
  - **user**: OneToOne to the user
  - **timezone**: the current timezone string for that user
