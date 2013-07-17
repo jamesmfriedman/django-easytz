@@ -17,7 +17,7 @@ Setup
  3. add `easytz.middleware.TimezonesMiddleware'` to your `MIDDLEWARE_CLASSES`
  4. add `easytz` to your `INSTALLED_APPS`
  5. include {{ STATIC_URL }}easytz/js/easytz.js with your scripts 
- 6. Run syncdb to add the model for storing users timezones
+ 6. Run `./manage.py syncdb` to add the model for storing users timezones
 
 How It Works
 ----------------------
