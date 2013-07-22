@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.importlib import import_module
 from django.contrib.auth.models import User
 
-from .middleware import TimezonesMiddleware
+from easytz.middleware import TimezonesMiddleware
 
 class TimezoneTestCase(TestCase):
     
@@ -93,8 +93,3 @@ class TimezoneTestCase(TestCase):
 
         # our session store should also reflect the same
         self.assertEqual(request.session.get('timezone'), request.COOKIES['timezone'])
-        
-
-        
-
-        
