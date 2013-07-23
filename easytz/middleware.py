@@ -23,6 +23,9 @@ class TimezonesMiddleware(object):
                     # on getting a valid timezone
                     timezone.activate(tz)
 
+                    # caching the timezone inside the user instance
+                    request.user._timezone = tz_store
+
                     # check to see if the session needs to be updated
                     if request.user.is_authenticated() and session_tz != tz:
                         request.session['timezone'] = tz
@@ -33,8 +36,6 @@ class TimezonesMiddleware(object):
                         tz_store, created = TimezoneStore.objects.get_or_create(user = request.user)
                         tz_store.timezone = tz
                         tz_store.save()
-
-                        request.user._timezone = tz_store
 
                 except UnknownTimeZoneError:
                     pass
