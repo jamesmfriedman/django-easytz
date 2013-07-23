@@ -24,7 +24,7 @@ class TimezonesMiddleware(object):
                     timezone.activate(tz)
 
                     # caching the timezone inside the user instance
-                    request.user._timezone = tz_store
+                    request.user._timezone = tz
 
                     # check to see if the session needs to be updated
                     if request.user.is_authenticated() and session_tz != tz:
