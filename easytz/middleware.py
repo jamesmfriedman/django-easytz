@@ -3,7 +3,9 @@ from django.utils import timezone
 from pytz import UnknownTimeZoneError
 from .models import TimezoneStore
 
+
 class TimezonesMiddleware(object):
+
     def process_request(self, request):
         """
         Attempts to activate a timezone from a cookie or session
@@ -20,7 +22,10 @@ class TimezonesMiddleware(object):
                     # timezone or none, so the rest of the logic following is coniditional
                     # on getting a valid timezone
                     timezone.activate(tz)
-                    
+
+                    # caching the timezone inside the user instance
+                    request.user._timezone = tz_store
+
                     # check to see if the session needs to be updated
                     if request.user.is_authenticated() and session_tz != tz:
                         request.session['timezone'] = tz

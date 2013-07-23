@@ -37,11 +37,17 @@ def get_timezone_for_user(self):
     Example:
         my_user_object.tz
     """
+    if getattr(self, '_timezone', None):
+        return self._timezone
+
     try:
         tz = self.timezone
     except TimezoneStore.DoesNotExist:
         tz, created = TimezoneStore.objects.get_or_create(user = self)
-        
+
+    # cache the timezone object for this user
+    self._timezone = tz.timezone
+
     return tz.timezone
 
 User.add_to_class('tz', property(get_timezone_for_user))

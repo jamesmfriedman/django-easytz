@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 from .middleware import TimezonesMiddleware
 
 class TimezoneTestCase(TestCase):
-    
+
     def get_request(self):
         """
         Get a fake request object that has some stuff we need on it
@@ -93,8 +93,3 @@ class TimezoneTestCase(TestCase):
 
         # our session store should also reflect the same
         self.assertEqual(request.session.get('timezone'), request.COOKIES['timezone'])
-        
-
-        
-
-        
