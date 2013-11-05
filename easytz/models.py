@@ -1,3 +1,5 @@
+import pytz
+
 from django.db import models
 from django.conf import settings
 
@@ -24,7 +26,6 @@ class TimezoneStore(models.Model):
     # current max length of a tz is 30, going with 48 to be safe
     timezone = models.CharField(max_length = 48, default = get_default_timezone)
 
-
     def __unicode__(self):
         return self.timezone
 
@@ -50,4 +51,18 @@ def get_timezone_for_user(self):
 
     return tz.timezone
 
+
+def get_timezone_info_for_user(self):
+    """
+    Gets a users timezone as a tzinfo object
+    """
+    if getattr(self, '_timezone_info', None):
+        return self._timezone_info
+
+    self._timezone_info = pytz.timezone(self.tz)
+
+    return self._timezone_info
+
+
 User.add_to_class('tz', property(get_timezone_for_user))
+User.add_to_class('tzinfo', property(get_timezone_info_for_user))
